@@ -2,9 +2,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Products</title>
+    <style>
+        body { text-align: center; background-color: lightcoral; color: white; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <h1>Shop Page</h1>
+    <h1>Products</h1>
+    <div id="products">
+
+    </div>
+
+    <script>
+        window.onload = () => {
+            const productsContainer = document.getElementById("products");
+            fetch('/products').then(res => res.json())
+            .then(result => {
+                result.products.forEach(product => {
+                    let productDiv = document.createElement("div");
+                    productDiv.innerHTML = constructProductDiv(product);
+                    productsContainer.appendChild(productDiv);
+                });
+            });
+        }
+
+        const constructProductDiv = (product) => {
+            // TO BE CONTINUED
+            return `${product.name}: ${product.price}`
+        }
+    </script>
 </body>
 </html>
