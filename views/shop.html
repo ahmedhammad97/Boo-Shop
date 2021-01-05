@@ -5,6 +5,7 @@
     <title>Products</title>
     <style>
         body { text-align: center; background-color: lightcoral; color: white; font-weight: bold; }
+        button { font-size: 15px; padding: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -23,12 +24,38 @@
                     productDiv.innerHTML = constructProductDiv(product);
                     productsContainer.appendChild(productDiv);
                 });
+                addListenersToBtns();
             });
         }
 
+        const addListenersToBtns = () => {
+            document.querySelectorAll("button").forEach(button => button.addEventListener('click', (event) => {
+                const prodId = event.target.getAttribute("prodId");
+                const email = prompt("Please enter your email address...");
+                const address = prompt("Please enter your home address...");
+                const orderObj = {
+                    "email": email,
+                    "address": address,
+                    "prodId": prodId
+                }
+                fetch('/order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderObj)
+                })
+                .then(res => alert("Ordered Placed"));
+            }));
+        }
+
         const constructProductDiv = (product) => {
-            // TO BE CONTINUED
-            return `${product.name}: ${product.price}`
+            return `
+                <img width="300px" src="${product.image}"> <br>
+                <p>${product.name}</p>
+                <p>${product.description}</p>
+                <p>${product.price}</p>
+                <button prodId="${product.id}">Buy</button>
+                <br><br><br><br><br><br><br><br>
+            `
         }
     </script>
 </body>
