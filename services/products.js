@@ -12,6 +12,10 @@ const deleteProduct = (req, res) => {
     res.end();
 }
 
+const getCopyOfProducts = () => {
+    return staticProductList;
+}
+
 
 let staticProductList = [
     {
@@ -51,4 +55,4 @@ let staticProductList = [
     },
 ]
 
-module.exports = { getAllProducts, addProduct, deleteProduct };
+module.exports = { getAllProducts, addProduct, deleteProduct, getCopyOfProducts };
