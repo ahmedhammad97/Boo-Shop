@@ -3,7 +3,7 @@ const router = require('express').Router();
 const path = require('path');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-
+const {sendMail} = require("./tools/mail");
 const productService = require('./services/products');
 const orderService = require('./services/orders');
 
