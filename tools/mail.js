@@ -32,11 +32,11 @@ const sendMail = (target,content)=>{
 
     }
 
-    transporter.sendMail(mailOptions, (err,info)=>{
+    transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            console.log("error sending mail: "+err);
+            console.log("error sending mail: " + err);
         }else{
-            console.log("email sent succsesfuly: " + info.resonse );
+            console.log("email sent succsesfuly: " + info.response );
         }
     });
 
