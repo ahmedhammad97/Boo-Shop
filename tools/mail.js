@@ -1,9 +1,16 @@
 const nodemailer = require("nodemailer");
 
+// const mail = {
+//     service: "XXX", // mail service provide eg: gmail
+//     user: "XXX", //sender email
+//     password: "XXX" // sender password
+// }
+
+
 const mail = {
-    service: "XXX", // mail service provide eg: gmail
-    user: "XXX", //sender email
-    password: "XXX" // sender password
+    service: "gmail",
+    user: "booshop.service@gmail.com",
+    password: "649D4FDCA50762633F7DDD0159"
 }
 
 const sendMail = (target,content)=>{
